@@ -6,16 +6,16 @@ import xml.etree.ElementTree as ET
 # sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
 ##anno_path修改为你存放xml文件的位置，最后末尾需要加上/
 # old_annotation是修要修改的标签名，new_annotation是修改后的标签名字
-anno_path = 'D:/大创/tiny/yolov4-tiny-tf2/VOCdevkit/VOC2007/Annotations/'
-jp_path = 'D:/大创/tiny/yolov4-tiny-tf2/VOCdevkit/VOC2007/JPEGImages/'
-old_annotation = 'Metal1'
+anno_path = 'D:/Dataset/temp/Annotations/'
+jp_path = 'D:/Dataset/temp/JPEGImages/'
+old_annotation = 'kele'
 new_annotation = 'Metal'
 del_annotations = ['Metal']
 # replace = True使用替换功能，False使用删除功能
 # CHOICE = 1 为替换功能
 # CHOICE = 2 为删除标签
 # CHOISE = 3 为删除没有标签信息的xml文件
-CHOICE = 3
+CHOICE = 1
 
 
 def _main():
@@ -47,7 +47,6 @@ def _Replace_Annotation(filepath):
     i = 0
     while Replace_(filepath) == False:
         i += 1
-
     return i
 
 def Replace_(filepath):
@@ -68,8 +67,6 @@ def Replace_(filepath):
                         # 重新写入xml，使修改生效
                         tree.write(anno_path + filepath, encoding="utf-8", xml_declaration=True)
                         return False
-
-
     return True
 
 # 删除标签
